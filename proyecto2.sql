@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS Area ( --Categoriza las distintas áreas del restaurante--
     id_area SERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,
-    fumadores BOOLEAN NOT NULL,
+    fumadores BOOLEAN NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Mesa ( --Mesas del restaurante--
