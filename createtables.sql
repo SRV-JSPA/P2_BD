@@ -2,7 +2,7 @@
 --Creación de tablas
 
 CREATE TABLE Restaurante (
-    id_Restaurante SERIAL PRIMARY KEY,
+    id_restaurante SERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,
     ubicacion TEXT NOT NULL
 );
