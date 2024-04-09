@@ -64,7 +64,7 @@ CREATE TABLE Pago (
     id_pago SERIAL PRIMARY KEY,
     id_pedido INTEGER NOT NULL,
     monto NUMERIC(10, 2) NOT NULL,
-    tipo TEXT NOT NULL,
+    metodo_pago TEXT NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
 );
 
