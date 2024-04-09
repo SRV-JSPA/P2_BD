@@ -2,17 +2,12 @@
 --Inserción de datos
 --(Faltan agregar más)
 
---Restaurante--
-INSERT INTO Restaurante (nombre, ubicacion) VALUES ('La Buena Mesa', 'Calle Principal 123');
-INSERT INTO Restaurante (nombre, ubicacion) VALUES ('Aurora Mediterránea', 'Avenida del Parque 456');
-
 --Area--
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Terraza', TRUE, 1);
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Salón principal', FALSE, 1);
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Salón 1', FALSE, 2);
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Salón 2', FALSE, 2);
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Pérgola', FALSE, 2);
-INSERT INTO Area (nombre, fumadores, id_restaurante) VALUES ('Terraza', TRUE, 2);
+INSERT INTO Area (nombre, fumadores, ) VALUES ('Terraza', TRUE);
+INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón principal', FALSE);
+INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón 2', FALSE);
+INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón 3', FALSE);
+INSERT INTO Area (nombre, fumadores, ) VALUES ('Pérgola', FALSE);
 
 --Mesa--
 INSERT INTO Mesa (capacidad, movil, id_area) VALUES (4, TRUE, 1);
