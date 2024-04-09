@@ -54,7 +54,7 @@ CREATE TABLE Item (
 CREATE TABLE Detalle_Pedido (
     id_pedido INTEGER NOT NULL,
     id_item INTEGER NOT NULL,
-    cantidad INTEGER NOT NULL,
+    monto INTEGER NOT NULL,
     PRIMARY KEY (id_pedido, id_item),
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido),
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
@@ -63,9 +63,16 @@ CREATE TABLE Detalle_Pedido (
 CREATE TABLE Pago (
     id_pago SERIAL PRIMARY KEY,
     id_pedido INTEGER NOT NULL,
-    monto NUMERIC(10, 2) NOT NULL,
-    metodo_pago TEXT NOT NULL,
+    monto_total NUMERIC(10, 2) NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
+);
+
+CREATE TABLE MetodoPago (
+    id_metodo_pago SERIAL PRIMARY KEY,
+    id_pago INTEGER NOT NULL,
+    metodo_pago TEXT NOT NULL,
+    monto NUMERIC(10, 2) NOT NULL,
+    FOREIGN KEY (id_pago) REFERENCES Pago(id_pago)
 );
 
 CREATE TABLE Mesero (
