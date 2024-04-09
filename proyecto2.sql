@@ -1,5 +1,4 @@
-
---Creación de tablas
+-- Creación de tablas
 
 CREATE TABLE Restaurante (
     id_restaurante SERIAL PRIMARY KEY,
@@ -28,6 +27,26 @@ CREATE TABLE Cliente (
     nit TEXT,
     nombre TEXT NOT NULL,
     direccion TEXT
+);
+
+CREATE TABLE Personal (
+    id_personal SERIAL PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    rol TEXT NOT NULL
+);
+
+CREATE TABLE Usuarios (
+    usuario VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    id_personal INTEGER,
+    FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
+);
+
+CREATE TABLE Mesero (
+    id_mesero SERIAL PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    id_area_asignada INTEGER,
+    FOREIGN KEY (id_area_asignada) REFERENCES Area(id_area)
 );
 
 CREATE TABLE Pedido (
@@ -75,13 +94,6 @@ CREATE TABLE MetodoPago (
     FOREIGN KEY (id_pago) REFERENCES Pago(id_pago)
 );
 
-CREATE TABLE Mesero (
-    id_mesero SERIAL PRIMARY KEY,
-    nombre TEXT NOT NULL,
-    id_area_asignada INTEGER,
-    FOREIGN KEY (id_area_asignada) REFERENCES Area(id_area)
-);
-
 CREATE TABLE Encuesta (
     id_encuesta SERIAL PRIMARY KEY,
     id_pedido INTEGER NOT NULL,
@@ -101,17 +113,4 @@ CREATE TABLE Queja (
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
     FOREIGN KEY (id_personal) REFERENCES Mesero(id_mesero),
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
-);
-
-CREATE TABLE Personal (
-    id_personal SERIAL PRIMARY KEY,
-    nombre TEXT NOT NULL,
-    rol TEXT NOT NULL
-);
-
-CREATE TABLE Usuarios (
-    usuario VARCHAR(255) NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
-    id_personal INTEGER,
-    FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
 );
