@@ -44,8 +44,10 @@ CREATE TABLE Usuarios (
 
 CREATE TABLE Mesero (
     id_mesero SERIAL PRIMARY KEY,
+    id_personal INTEGER NOT NULL,
     nombre TEXT NOT NULL,
     id_area_asignada INTEGER,
+    FOREIGN KEY (id_personal) REFERENCES Personal(id_personal),
     FOREIGN KEY (id_area_asignada) REFERENCES Area(id_area)
 );
 
