@@ -104,7 +104,14 @@ CREATE TABLE Queja (
 );
 
 CREATE TABLE Personal (
-    ip_personal SERIAL PRIMARY KEY,
+    id_personal SERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,
     rol TEXT NOT NULL
+);
+
+CREATE TABLE Usuarios (
+    usuario VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    id_personal INTEGER,
+    FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
 );
