@@ -126,11 +126,11 @@ CREATE TABLE Queja ( -- Permite a los clientes presentar quejas, que se registra
 --(Faltan agregar más)
 
 --Area--
-INSERT INTO Area (nombre, fumadores, ) VALUES ('Terraza', TRUE);
-INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón principal', FALSE);
-INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón 2', FALSE);
-INSERT INTO Area (nombre, fumadores, ) VALUES ('Salón 3', FALSE);
-INSERT INTO Area (nombre, fumadores, ) VALUES ('Pérgola', FALSE);
+INSERT INTO Area (nombre, fumadores ) VALUES ('Terraza', TRUE);
+INSERT INTO Area (nombre, fumadores ) VALUES ('Salón principal', FALSE);
+INSERT INTO Area (nombre, fumadores) VALUES ('Salón 2', FALSE);
+INSERT INTO Area (nombre, fumadores ) VALUES ('Salón 3', FALSE);
+INSERT INTO Area (nombre, fumadores ) VALUES ('Pérgola', FALSE);
 
 --Mesa--
 INSERT INTO Mesa (capacidad, movil, id_area) VALUES (4, TRUE, 1);
