@@ -54,7 +54,7 @@ CREATE TABLE Item (
 CREATE TABLE Detalle_Pedido (
     id_pedido INTEGER NOT NULL,
     id_item INTEGER NOT NULL,
-    monto INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL,
     PRIMARY KEY (id_pedido, id_item),
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido),
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
