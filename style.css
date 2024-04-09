@@ -1,0 +1,165 @@
+:root {
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+
+    --primario: #784D3C;
+    --gris: #E1E1E1;
+    --blanco: #FFF;
+    --negro: #000;
+}
+
+html{
+    font-size: 62.5%;
+	box-sizing: border-box; 
+}
+*,*:before, *:after{
+	box-sizing: inherit;
+}
+
+body{
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem;
+    line-height: 2;
+}
+a {
+    text-decoration: none;
+}
+
+h1,h2,h3,h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+h2 {
+    font-size: 4rem;
+}
+h3 {
+    font-size: 3.2rem;
+}
+h4 {
+    font-size: 2.8rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+.contenedor {
+    width: min(90%, 120rem);
+    margin: 0 auto;
+}
+
+.header {
+    background-image: url(../img/banner.jpg);
+    height: 60rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4rem;
+}
+
+.centrar-texto{
+    text-align: center;
+}
+.logo{
+    color: var(--blanco);
+}
+.logo__nombre {
+    font-weight: normal;
+}
+.logo__bold {
+    font-weight: bold;
+}
+.navegacion {
+    display: flex;
+    gap: 2rem;
+}
+.no-margin {
+    margin: 0;
+}
+.footer {
+    background-color: var(--negro);
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+.copyright {
+    color: white;
+}
+
+.seccion {
+    margin-top: calc(5rem / 2);
+    margin-bottom: calc(5rem / 2);
+}
+.contenido-centrado {
+    max-width: 80rem;
+}
+.alerta {
+    padding: .5rem;
+    text-align: center;
+    color: #ffffff; 
+    font-weight: bold; 
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+.alerta.error {
+    background-color: #ff0000; 
+}
+
+.alerta.exito {
+    background-color: #00ff00; 
+}
+.formulario {
+    background-color: var(--blanco);
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem;
+}
+.boton-verde {
+    background-color: #71B100;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 2rem;
+    display: inline-block;
+    border: none;
+    margin-right: 39rem;
+}
+
+.boton-verde:hover {
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.boton-gris {
+    background-color: darkgray;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 2rem;
+    display: inline-block;
+    border: none;
+}
+
+.boton-gris:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.texto-header {
+    color: var(--blanco);
+}
