@@ -1,11 +1,11 @@
 -- Creación de tablas
-CREATE TABLE Area ( --Categoriza las distintas áreas del restaurante--
+CREATE TABLE IF NOT EXISTS Area ( --Categoriza las distintas áreas del restaurante--
     id_area SERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,
     fumadores BOOLEAN NOT NULL,
 );
 
-CREATE TABLE Mesa ( --Mesas del restaurante--
+CREATE TABLE IF NOT EXISTS Mesa ( --Mesas del restaurante--
     id_mesa SERIAL PRIMARY KEY,
     capacidad INTEGER NOT NULL,
     movil BOOLEAN NOT NULL,
@@ -13,20 +13,20 @@ CREATE TABLE Mesa ( --Mesas del restaurante--
     FOREIGN KEY (id_area) REFERENCES Area(id_area)
 );
     
-CREATE TABLE Cliente ( --Guarda la información de los clientes--
+CREATE TABLE IF NOT EXISTS Cliente ( --Guarda la información de los clientes--
     id_cliente SERIAL PRIMARY KEY,
     nit TEXT,
     nombre TEXT NOT NULL,
     direccion TEXT
 );
 
-CREATE TABLE Personal ( --Mantiene el registro de los empleados--
+CREATE TABLE IF NOT EXISTS Personal ( --Mantiene el registro de los empleados--
     id_personal SERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,
     rol TEXT NOT NULL
 );
 
-CREATE TABLE Usuarios ( --Cuentas de usuario para la autenticación del sistema--
+CREATE TABLE IF NOT EXISTS Usuarios ( --Cuentas de usuario para la autenticación del sistema--
     id_usuario SERIAL PRIMARY KEY,
     usuario VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE Usuarios ( --Cuentas de usuario para la autenticación del sistema-
     FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
 );
 
-CREATE TABLE Mesero ( --Identifica únicamente a los meseros--
+CREATE TABLE IF NOT EXISTS Mesero ( --Identifica únicamente a los meseros--
     id_mesero SERIAL PRIMARY KEY,
     id_personal INTEGER NOT NULL,
     nombre TEXT NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE Mesero ( --Identifica únicamente a los meseros--
     FOREIGN KEY (id_area_asignada) REFERENCES Area(id_area)
 );
 
-CREATE TABLE Pedido (--Realiza un seguimiento de los pedidos realizados por los clientes--
+CREATE TABLE IF NOT EXISTS Pedido (--Realiza un seguimiento de los pedidos realizados por los clientes--
     id_pedido SERIAL PRIMARY KEY,
     fecha_hora TIMESTAMP DEFAULT NOW(),
     id_mesa INTEGER NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE Pedido (--Realiza un seguimiento de los pedidos realizados por los 
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
-CREATE TABLE Item ( --Define los items disponibles para pedir--
+CREATE TABLE IF NOT EXISTS Item ( --Define los items disponibles para pedir--
     id_item SERIAL PRIMARY KEY,
     tipo_item TEXT NOT NULL, --Platillo, Bebida, o Postre
     nombre TEXT NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE Item ( --Define los items disponibles para pedir--
     precio NUMERIC(10, 2) NOT NULL
 );
 
-CREATE TABLE Detalle_Pedido ( --Relaciona los pedidos con los items específicos--
+CREATE TABLE IF NOT EXISTS Detalle_Pedido ( --Relaciona los pedidos con los items específicos--
     id_detalle_pedido SERIAL PRIMARY KEY, -- Clave primaria autoincrementable
     id_pedido INTEGER NOT NULL,
     id_item INTEGER NOT NULL,
@@ -75,14 +75,14 @@ CREATE TABLE Detalle_Pedido ( --Relaciona los pedidos con los items específicos
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
 );
 
-CREATE TABLE Pago ( --Registra información sobre los pagos de los pedidos.--
+CREATE TABLE IF NOT EXISTS Pago ( --Registra información sobre los pagos de los pedidos.--
     id_pago SERIAL PRIMARY KEY,
     id_pedido INTEGER NOT NULL,
     monto_total NUMERIC(10, 2) NOT NULL, --Total pagado en el pedido.
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
 );
 
-CREATE TABLE MetodoPago ( --Detalla los métodos de pago utilizados para cada pago--
+CREATE TABLE IF NOT EXISTS MetodoPago ( --Detalla los métodos de pago utilizados para cada pago--
     id_metodo_pago SERIAL PRIMARY KEY,
     id_contribucion INTEGER NOT NULL,
     metodo_pago TEXT NOT NULL, -- Efectivo, Tarjeta de Crédito
@@ -90,7 +90,7 @@ CREATE TABLE MetodoPago ( --Detalla los métodos de pago utilizados para cada pa
     FOREIGN KEY (id_contribucion) REFERENCES ContribucionPago(id_contribucion)
 );
 
-CREATE TABLE ContribucionPago ( --Permite rastrear las contribuciones individuales a los pagos cuando un pedido es compartido por varios clientes.--
+CREATE TABLE IF NOT EXISTS ContribucionPago ( --Permite rastrear las contribuciones individuales a los pagos cuando un pedido es compartido por varios clientes.--
     id_contribucion SERIAL PRIMARY KEY,
     id_pago INTEGER NOT NULL,
     id_cliente INTEGER NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE ContribucionPago ( --Permite rastrear las contribuciones individual
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
-CREATE TABLE Encuesta ( --Recopila retroalimentación de los clientes sobre los meseros y el servicio proporcionado--
+CREATE TABLE IF NOT EXISTS Encuesta ( --Recopila retroalimentación de los clientes sobre los meseros y el servicio proporcionado--
     id_encuesta SERIAL PRIMARY KEY,
     id_mesero INTEGER NOT NULL,
     id_pedido INTEGER NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE Encuesta ( --Recopila retroalimentación de los clientes sobre los 
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
 );
 
-CREATE TABLE Queja ( -- Permite a los clientes presentar quejas, que se registran con detalles como el motivo, la clasificación de gravedad y si están relacionadas con personal o ítems específicos. --
+CREATE TABLE IF NOT EXISTS Queja ( -- Permite a los clientes presentar quejas, que se registran con detalles como el motivo, la clasificación de gravedad y si están relacionadas con personal o ítems específicos. --
     id_queja SERIAL PRIMARY KEY,
     id_cliente INTEGER NOT NULL,
     fecha_hora TIMESTAMP DEFAULT NOW(),
