@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if ($usuario) {
                 
-                if (password_verify($password, $usuario['contraseña'])) {
+                if (password_verify($password, $usuario['contrasena'])) {
                     
                     session_start();
 

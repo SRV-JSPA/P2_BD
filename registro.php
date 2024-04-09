@@ -28,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $query = "INSERT INTO usuarios (usuario, contrasena) VALUES ( '{$user}', '{$passwordHash}' );";
         $statement = $db->prepare($query);
         $statement->execute();
+        header("Location: /");
     }
 }
 
