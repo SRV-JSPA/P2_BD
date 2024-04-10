@@ -22,13 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($errores)) {
         try {
             
-            $query = "SELECT * FROM usuarios WHERE usuario = '{$user}';";
+            $query = "SELECT u.usuario, u.contrasena, per.rol FROM usuarios AS u INNER JOIN personal AS per ON per.id_personal = u.id_personal WHERE u.usuario = '{$user}'";
             $stmt = $db->prepare($query);
             $stmt->execute();
 
             
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-            
 
             if ($usuario) {
                 
@@ -38,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     
                     $_SESSION["usuario"] = $usuario["usuario"];
+                    $_SESSION["rol"] = $usuario["rol"];
                     $_SESSION["login"] = true;
                     
                     header("Location: /pages");
