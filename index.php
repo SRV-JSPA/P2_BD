@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            
 
             if ($usuario) {
                 
@@ -36,9 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     session_start();
 
                     
-                    $_SESSION["usuario"] = $usuario["email"];
+                    $_SESSION["usuario"] = $usuario["usuario"];
                     $_SESSION["login"] = true;
-
+                    
                     header("Location: /pages");
                     exit; 
                 } else {
