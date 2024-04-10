@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Mesas</h1>
-</body>
-</html>
+<?php
+require "../includes/database.php";
+require '../includes/funciones.php';
+
+$db = conectarBD();
+
+incluirTemplate('header', $inicio = true);
+?>
+
+<main>
+    <h1>mesas</h1>
+</main>
+
+<?php
+incluirTemplate('footer')
+?>
+
