@@ -148,10 +148,10 @@ INSERT INTO Personal (nombre, rol) VALUES ('Daniel Barrios', 'Mesero');
 INSERT INTO Personal (nombre, rol) VALUES ('Ximena Garcia', 'Host');
 
 --Usuarios--
-INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('mar37452', '1234', 1);
-INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('gom21968', '8293', 2);
-INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('bar30495', '6384', 3);
-INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('gar92365', '0234', 4);
+-- INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('mar37452', '1234', 1);
+-- INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('gom21968', '8293', 2);
+-- INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('bar30495', '6384', 3);
+-- INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('gar92365', '0234', 4);
 
 --Mesero--
 INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (3, 'Daniel Barrios', 1);
@@ -194,7 +194,7 @@ INSERT INTO Item (tipo_item, nombre, descripcion, precio) VALUES ('Postre', 'Mou
 -- );
 
 -- Pago --
-INSERT INTO Pago (id_pedido, id_cliente, monto_contribucion) VALUES (1, 2, 96.70);
+INSERT INTO Pago (id_pedido, monto_total) VALUES (1, 96.70);
 
 
 -- Contribución --
