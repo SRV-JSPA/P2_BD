@@ -9,7 +9,6 @@ function conectarBD() {
 
     try {
         $db = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
-        echo "se conecto";
     } catch (PDOException $e) {
         echo "No se pudo conectar a la base de datos: " . $e->getMessage();
     }

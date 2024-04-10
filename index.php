@@ -55,9 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 
-
-
-
 incluirTemplate("header");
 ?>
 <main class="contenedor seccion contenido-centrado">
@@ -83,10 +80,8 @@ incluirTemplate("header");
         </fieldset>
 
         <input type="submit" value="Iniciar Sesión" class="boton-verde">
-        <a href="registro.php" class="boton-gris">Registro</a>
+        <p>Si no tiene usuario aún, porfavor regístrese <a href="registro.php" class='enlace-registro'>Aquí</a></p>
 </main>
-
 <?php
-
 incluirTemplate("footer");
 ?>

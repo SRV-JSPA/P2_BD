@@ -22,7 +22,7 @@ $auth = $_SESSION["login"] ?? null;
 
 <body>
 
-    <header class="header <?php echo $inicio ? "inicio" : ''; ?>">
+    <header class=" <?php echo $inicio ? "inicio" : 'header'; ?>">
         <div class="contenedor">
             <div class="barra">
                 <a class="logo" href="/">
@@ -32,13 +32,9 @@ $auth = $_SESSION["login"] ?? null;
                 <nav class="navegacion">
                     <p class="texto-header" >Lo mejor de lo mejor</p>
                     <?php if ($auth) : ?>
-                        <a href="#">Cerrar Sesión</a>
+                        <a href="../../cerrar-sesion.php" class='navegacion__enlace' >Cerrar Sesión</a>
                     <?php endif; ?>
                 </nav>
             </div>
         </div>
-
-        <?php if ($inicio) { ?>
-            <h1>Restaurante</h1>
-        <?php } ?>
     </header>
