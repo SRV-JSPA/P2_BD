@@ -2,77 +2,87 @@
 
 require "includes/database.php";
 require 'includes/funciones.php';
+
 $db = conectarBD();
 
 $errores = [];
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $user = $_POST["user"];
-    $password = $_POST["password"];
-    $id_personal = $_POST['id_personal'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera los datos del formulario de registro
+    $nombre = $_POST['nombre']; 
+    $rol = $_POST['rol']; 
+    $usuario = $_POST['user'];
+    $contraseña = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
-    $errores = [];
-    if (!$user) {
-        $errores[] = "El email es obligatorio o no es válido";
-    }
-    if (!$password) {
-        $errores[] = "El Password es obligatorio";
-    }
-    if (!$id_personal) {
-        $errores[] = "El id personal es obligatorio";
-    }
+    try {
+        // Verifica si el usuario ya existe en la base de datos
+        $stmt = $db->prepare("SELECT * FROM Usuarios WHERE usuario = :usuario");
+        $stmt->execute(['usuario' => $usuario]);
 
-    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-    if (empty($errores)) {
-
-        $verif = "SELECT * FROM usuarios WHERE usuario = ?";
-        $statement = $db->prepare($verif);
-        $statement->execute([$user]);
-
-        if ($statement->rowCount() > 0) {
-            $errores[] = "El usuario ya existe";
+        if ($stmt->rowCount() > 0) {
+            echo "El usuario ya existe. Por favor, elige otro nombre de usuario.";
         } else {
-            $query = "INSERT INTO usuarios (usuario, contrasena, id_personal) VALUES ( '{$user}', '{$passwordHash}', '{$id_personal}' );";
-            $statement = $db->prepare($query);
-            $statement->execute();
-            header("Location: /");
+            // Inserta primero en Personal
+            $stmt = $db->prepare("INSERT INTO Personal (nombre, rol) VALUES (:nombre, :rol) RETURNING id_personal");
+            $stmt->execute(['nombre' => $nombre, 'rol' => $rol]);
+            $idPersonal = $db->lastInsertId(); // Obtener el ID del último registro insertado
+
+            // Inserta el nuevo usuario en la base de datos vinculado a Personal
+            $stmt = $db->prepare("INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES (:usuario, :contrasena, :id_personal)");
+            $stmt->execute([
+                'usuario' => $usuario,
+                'contrasena' => $contraseña,
+                'id_personal' => $idPersonal
+            ]);
+            header("Location: /"); 
+            exit;
         }
+    } catch (PDOException $e) {
+        $errores[] = "Error en la base de datos: " . $e->getMessage();
+        error_log('Error en registro: ' . $e->getMessage());
     }
 }
-
 
 
 incluirTemplate("header");
 ?>
 <main class="contenedor seccion contenido-centrado">
-    <?php
-    foreach ($errores as $error) { ?>
+    <?php foreach ($errores as $error) : ?>
         <div class="alerta error">
-            <?php echo "" . $error . ""; ?>
+            <?php echo htmlspecialchars($error); ?>
         </div>
-    <?php } ?>
+    <?php endforeach; ?>
     <h1>Registro</h1>
 
+    <form class="formulario" method="POST"> 
+        <fieldset>
+            <legend>Información del Usuario y Personal</legend>
 
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" placeholder="Nombre completo" id="nombre" required>
 
-    <form class="formulario" method="POST">
-        <fieldset class="campos" >
-            <legend>Usuario, Contraseña y ID personal</legend>
+            <label for="rol">Rol:</label>
+            <select name="rol" id="rol" required>
+                <option value="">Selecciona un rol</option>
+                <option value="Mesero">Mesero</option>
+                <option value="Chef">Chef</option>
+                <option value="Host">Host</option>
+                <option value="Gerente">Administrador</option>
+                
+            </select>
 
-            <label for="user">Usuario</label>
-            <input type="text" name="user" placeholder="Tu Usuario" id="user">
+            <label for="user">Usuario:</label>
+            <input type="text" name="user" placeholder="Tu Usuario" id="user" required>
 
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" placeholder="Tu Contraseña" id="password">
-
-            <label for="id_personal">ID personal</label>
-            <input type="number" name="id_personal" placeholder="Tu ID personal" id="id_personal">
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" placeholder="Tu Contraseña" id="password" required>
         </fieldset>
 
         <input type="submit" value="Registro" class="boton-verde">
-        <p>Si ya tiene un usuario, entonces inicie sesión <a href="index.php" class='enlace-registro'>Aquí</a></p>
+        <p>Si ya tienes un usuario, entonces inicia sesión <a href="index.php" class='enlace-registro'>Aquí</a></p>
+    </form>
 </main>
+
 
 <?php
 
