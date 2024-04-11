@@ -16,7 +16,7 @@ $auth = $_SESSION["login"] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto 2 BD</title>
     <link href="../../style.css" rel="stylesheet">
-    <link rel="preload" href="../../normalize.css">
+    <link rel="stylesheet" href="../../normalize.css">
 </head>
 
 <body>

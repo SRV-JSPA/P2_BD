@@ -286,3 +286,22 @@ img  {
     margin: 0 auto;
 }
 
+.pedidos {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.pedidos-seccion {
+    background-color: #ffffff;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 10px 7px 20px orange;
+    transition: all 300ms ease;
+    cursor: default;
+    margin: 0 auto;
+    width: 100%;
+}
+
