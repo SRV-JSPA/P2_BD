@@ -12,53 +12,69 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST["password"];
 
     if (!$user) {
-        $errores[] = "El user es obligatorio o no es válido";
+        $errores[] = "El usuario es obligatorio o no es válido";
+        error_log("Inicio de sesión: Se ha ingresado un usuario vacío o inválido.");
     }
 
     if (!$password) {
         $errores[] = "El Password es obligatorio";
+        error_log("Inicio de sesión: Se ha ingresado un password vacío.");
     }
 
     if (empty($errores)) {
         try {
-            
-            $query = "SELECT u.usuario, u.contrasena, per.rol, u.id_personal FROM usuarios AS u INNER JOIN personal AS per ON per.id_personal = u.id_personal WHERE u.usuario = '{$user}'";
+            $query = "SELECT u.usuario, u.contrasena, per.rol, u.id_personal FROM usuarios AS u INNER JOIN personal AS per ON u.id_personal = per.id_personal WHERE u.usuario = ?";
             $stmt = $db->prepare($query);
+            $stmt->bindParam(1, $user, PDO::PARAM_STR);
             $stmt->execute();
-
-            
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($usuario) {
-
-                
-                
                 if (password_verify($password, $usuario['contrasena'])) {
-                    
                     session_start();
-
-                    
                     $_SESSION["usuario"] = $usuario["usuario"];
                     $_SESSION["rol"] = $usuario["rol"];
-                    $_SESSION['id_personal'] = $usuario["id_personal"];
                     $_SESSION["login"] = true;
-
                     
+                    error_log("Inicio de sesión exitoso para el usuario: {$user}");
                     
                     header("Location: /pages");
-                    exit; 
+                    exit;
                 } else {
-                    $errores[] = "El password es incorrecto";
+                    if ($password === $usuario['contrasena']) {
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                        $updateQuery = "UPDATE usuarios SET contrasena = ? WHERE id_personal = ?";
+                        $updateStmt = $db->prepare($updateQuery);
+                        $updateStmt->bindParam(1, $hash, PDO::PARAM_STR);
+                        $updateStmt->bindParam(2, $usuario['id_personal'], PDO::PARAM_INT);
+                        $updateStmt->execute();
+                        
+                        session_start();
+                        $_SESSION["usuario"] = $usuario["usuario"];
+                        $_SESSION["rol"] = $usuario["rol"];
+                        $_SESSION["login"] = true;
+                        
+                        error_log("Inicio de sesión exitoso y contraseña actualizada para el usuario: {$user}");
+                        
+                        header("Location: /pages");
+                        exit;
+                    } else {
+                        $errores[] = "El Password es incorrecto";
+                        error_log("Inicio de sesión fallido: Contraseña incorrecta para el usuario {$user}.");
+                    }
                 }
             } else {
                 $errores[] = "El usuario no existe";
+                error_log("Inicio de sesión fallido: El usuario {$user} no existe.");
             }
         } catch (PDOException $e) {
-            die('Error al ejecutar la consulta: ' . $e->getMessage());
+            $error = $e->getMessage();
+            $errores[] = "Error al ejecutar la consulta: {$error}";
+            error_log("Error al ejecutar la consulta en el inicio de sesión: {$error}");
+            die('Error al ejecutar la consulta: ' . $error);
         }
     }
 }
-
 
 incluirTemplate("header");
 ?>
@@ -70,8 +86,6 @@ incluirTemplate("header");
         </div>
     <?php } ?>
     <h1>Iniciar Sesión</h1>
-
-
 
     <form class="formulario" method="POST">
         <fieldset>
