@@ -146,17 +146,34 @@ img  {
     width: 95%;
     padding: 5rem;
 }
-.boton-verde {
-    background-color: #71B100;
+
+.c-boton {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 2rem;
+}
+
+
+.boton-verde, .boton-rojo {
+    background-color: #71B100; 
     color: white;
     font-weight: 700;
     text-decoration: none;
     padding: 1rem 3rem;
     text-align: center;
-    margin-top: 2rem;
-    display: inline-block;
     border: none;
-    margin-right: 39rem;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.boton-rojo {
+    background-color: red; 
+}
+
+.boton-rojo:hover{
+    background-color: darkred;
+    cursor: pointer;
 }
 
 .boton-verde:hover {
@@ -231,3 +248,30 @@ img  {
     display: flex;
     flex-direction: column;
 }
+
+.mesas {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.mesas-seccion {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 10px 7px 20px orange;
+    transition: all 300ms ease;
+    cursor: default;
+    margin: 0 auto;
+}
+
+.img-mesa{
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+}
+
