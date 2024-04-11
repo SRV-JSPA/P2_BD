@@ -67,7 +67,7 @@ incluirTemplate("header");
                 <option value="Mesero">Mesero</option>
                 <option value="Chef">Chef</option>
                 <option value="Host">Host</option>
-                <option value="Gerente">Administrador</option>
+                <option value="Gerente">Gerente</option>
                 
             </select>
 
