@@ -226,3 +226,8 @@ img  {
 .enlace-registro {
     color: black;
 }
+
+.campos {
+    display: flex;
+    flex-direction: column;
+}

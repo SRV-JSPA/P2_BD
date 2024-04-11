@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $user = $_POST["user"];
     $password = $_POST["password"];
+    $id_personal = $_POST['id_personal'];
 
     $errores = [];
     if (!$user) {
@@ -16,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if (!$password) {
         $errores[] = "El Password es obligatorio";
+    }
+    if (!$id_personal) {
+        $errores[] = "El id personal es obligatorio";
     }
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -29,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($statement->rowCount() > 0) {
             $errores[] = "El usuario ya existe";
         } else {
-            $query = "INSERT INTO usuarios (usuario, contrasena) VALUES ( '{$user}', '{$passwordHash}' );";
+            $query = "INSERT INTO usuarios (usuario, contrasena, id_personal) VALUES ( '{$user}', '{$passwordHash}', '{$id_personal}' );";
             $statement = $db->prepare($query);
             $statement->execute();
             header("Location: /");
@@ -53,14 +57,17 @@ incluirTemplate("header");
 
 
     <form class="formulario" method="POST">
-        <fieldset>
-            <legend>Usuario y Contraseña</legend>
+        <fieldset class="campos" >
+            <legend>Usuario, Contraseña y ID personal</legend>
 
             <label for="user">Usuario</label>
             <input type="text" name="user" placeholder="Tu Usuario" id="user">
 
             <label for="password">Contraseña</label>
             <input type="password" name="password" placeholder="Tu Contraseña" id="password">
+
+            <label for="id_personal">ID personal</label>
+            <input type="number" name="id_personal" placeholder="Tu ID personal" id="id_personal">
         </fieldset>
 
         <input type="submit" value="Registro" class="boton-verde">
