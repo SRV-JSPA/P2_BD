@@ -19,8 +19,6 @@ $stmt->execute();
 
 $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-
 ?>
 
 <main class="mesas">
@@ -111,6 +109,8 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
 </main>
+
+<script src="../app.js" ></script>
 
 <?php
 incluirTemplate('footer');

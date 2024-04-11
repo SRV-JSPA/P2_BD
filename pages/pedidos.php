@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php
+require "../includes/database.php";
+require '../includes/funciones.php';
+
+incluirTemplate('header', $inicio = true);
+?>
+
+<main>
     <h1>pedidos</h1>
-</body>
-</html>
+</main>
+
+<?php
+incluirTemplate('footer');
+?>
