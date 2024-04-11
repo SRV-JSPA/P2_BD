@@ -34,6 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'contrasena' => $contraseña,
                 'id_personal' => $idPersonal
             ]);
+            if ($rol === 'Mesero') {
+                // Inserta id_area_asignada como NULL para que gerente le asigne un area
+                $stmt = $db->prepare("INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (:id_personal, :nombre, NULL)");
+                $stmt->execute(['id_personal' => $idPersonal, 'nombre' => $nombre]);
+            }
+            echo "El usuario se registró de manera exitosa!";
+
             header("Location: /"); 
             exit;
         }
