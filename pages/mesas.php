@@ -66,9 +66,9 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     function mesasDeMesero($db, $id)
     {
         $query = "SELECT ar.nombre 
-              FROM mesero AS mes 
-              INNER JOIN area AS ar ON ar.id_area = mes.id_area_asignada 
-              WHERE mes.id_personal = '{$id}'";
+            FROM mesero AS mes 
+            INNER JOIN area AS ar ON ar.id_area = mes.id_area_asignada 
+            WHERE mes.id_personal = '{$id}'";
         $stmt = $db->prepare($query);
         $stmt->execute();
 
@@ -78,9 +78,9 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $nombre = $area[0]['nombre'];
 
             $info = "SELECT ms.id_mesa, ms.capacidad, ms.movil, ar.nombre 
-                 FROM mesa AS ms 
-                 INNER JOIN area AS ar ON ar.id_area = ms.id_area 
-                 WHERE ar.nombre = '{$nombre}'";
+                FROM mesa AS ms 
+                INNER JOIN area AS ar ON ar.id_area = ms.id_area 
+                WHERE ar.nombre = '{$nombre}'";
             $stmt = $db->prepare($info);
             $stmt->execute();
 
