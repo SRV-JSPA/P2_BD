@@ -9,7 +9,6 @@ if (!isset($_SESSION)) {
 $rol = $_SESSION['rol'];
 $id = $_SESSION['id_personal'];
 
-
 $db = conectarBD();
 
 incluirTemplate('header', $inicio = true);

@@ -28,12 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bindParam(1, $user, PDO::PARAM_STR);
             $stmt->execute();
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            
 
             if ($usuario) {
                 if (password_verify($password, $usuario['contrasena'])) {
                     session_start();
                     $_SESSION["usuario"] = $usuario["usuario"];
                     $_SESSION["rol"] = $usuario["rol"];
+                    $_SESSION['id_personal'] = $usuario["id_personal"];
                     $_SESSION["login"] = true;
                     
                     error_log("Inicio de sesión exitoso para el usuario: {$user}");
@@ -52,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         session_start();
                         $_SESSION["usuario"] = $usuario["usuario"];
                         $_SESSION["rol"] = $usuario["rol"];
+                        $_SESSION['id_personal'] = $usuario["id_personal"];
                         $_SESSION["login"] = true;
                         
                         error_log("Inicio de sesión exitoso y contraseña actualizada para el usuario: {$user}");
