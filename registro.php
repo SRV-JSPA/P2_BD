@@ -71,7 +71,7 @@ incluirTemplate("header");
         </fieldset>
 
         <input type="submit" value="Registro" class="boton-verde">
-        <p>Si ya tiene un usuario, entonces inicie sesión <a href="registro.php" class='enlace-registro'>Aquí</a></p>
+        <p>Si ya tiene un usuario, entonces inicie sesión <a href="index.php" class='enlace-registro'>Aquí</a></p>
 </main>
 
 <?php
