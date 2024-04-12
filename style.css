@@ -55,7 +55,7 @@ img  {
 }
 
 .contenedor-menu {
-    width: 35cm;
+    width: 25cm;
     margin: 0 auto;
     background-color: #F4C272;
 }
@@ -223,6 +223,7 @@ img  {
     padding-bottom: 2rem;
     transition: all 300ms ease;
     cursor: default;
+    align-items: center;
 }
 
 .img-menu {
@@ -234,7 +235,7 @@ img  {
 .titulo-menu {
    display: flex;
    justify-content: center;
-   font-weight: 700;
+   font-weight: 900;
    color: #78451a;
    font-size: 2rem;
 }
