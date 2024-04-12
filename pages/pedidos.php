@@ -10,7 +10,7 @@ incluirTemplate('header', $inicio = true);
     <section class="pedidos-seccion">
         <h1>Pedido id_pedido</h1>
         <p>Cantidad - nombre ítem</p>
-        <p>Mesa id_mesa</p>
+        <p>Área: Nombre Area --> Mesa id_mesa</p>
         <p>Mesero: id_mesero</p>
     </section>
 </main>
