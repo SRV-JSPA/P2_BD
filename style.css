@@ -50,22 +50,21 @@ img  {
 }
 
 .contenedor {
-    width: min(90%, 120rem);
+    width: 30cm;;
     margin: 0 auto;
 }
 
 .contenedor-menu {
-    width: 100%;
+    width: 35cm;
     margin: 0 auto;
     background-color: #F4C272;
 }
 
 .header {
-    background-image: url(../img/banner.jpg);
+    background-image: url(./img/banner.jpg);
     height: 60rem;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; 
+    background-position:  center; 
 }
 
 .inicio {
@@ -163,8 +162,8 @@ img  {
     padding: 1rem 3rem;
     text-align: center;
     border: none;
-    display: inline-block;
-    margin-top: 2rem;
+    display: block;
+    margin: 2rem auto;
 }
 
 .boton-rojo {
@@ -241,7 +240,7 @@ img  {
 }
 
 .enlace-registro {
-    color: black;
+    color: rgb(76, 158, 25);
 }
 
 .campos {
@@ -314,7 +313,6 @@ img  {
 }
 
 .personal-seccion {
-    position: relative;
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 2rem;
@@ -327,26 +325,28 @@ img  {
     height: 300px; 
 }
 
-.personal-borrar {
-    background-color: red; 
-    color: white; 
-    padding: 0.5rem 1rem; 
-    border-radius: 0.5rem;
-    position: absolute;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s; 
+.personal-nombre {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    color: #78451a;
+    font-size: 2rem;
+    margin-top: 150px; 
+}
+
+.personal-puesto {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    color: #78451a;
+    font-size: 2rem;
+    margin-top: 170px; 
+}
+
+.personal-borrar{
+
 }
 
 .personal-editar {
-    background-color: rgb(0, 8, 255); 
-    color: white; 
-    padding: 0.5rem 1rem; 
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute;
-    right: 10px;
-   
+
 }

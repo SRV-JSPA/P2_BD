@@ -42,6 +42,7 @@ incluirTemplate('header', $inicio = true);
         mostrarSeccionPedidos();
         mostrarSeccionPlatillosEspera();
         mostrarSeccionBebidasEspera();
+        mostrarReportes();
     }
 
     function mostrarSeccionMesas()
@@ -113,7 +114,24 @@ incluirTemplate('header', $inicio = true);
         </section>
         <?php
     }
+
+    function mostrarReportes()
+    {
+        ?>
+        <section class="menu-seccion">
+            <p class="titulo-menu">Reportes</p>
+            <div className="img-menu">
+                <a href="/pages/reportes.php">
+                    <img src='../img/reportes.png' alt="Icono" />
+                </a>
+            </div>
+        </section>
+        <?php
+    }
     ?>
+
+
+    
 
 </main>
 
