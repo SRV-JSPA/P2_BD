@@ -147,6 +147,7 @@ img  {
 .alerta.exito {
     background-color: #00ff00; 
 }
+
 .formulario {
     background-color: var(--blanco);
     margin: -5rem auto 0 auto;

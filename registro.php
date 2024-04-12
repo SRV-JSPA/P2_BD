@@ -74,10 +74,9 @@ incluirTemplate("header");
                 <option value="Mesero">Mesero</option>
                 <option value="Chef">Chef</option>
                 <option value="Host">Host</option>
-                <option value="Gerente">Gerente</option>
-                
+                <option value="Gerente">Gerente</option>s
             </select>
-
+            <div></div>
             <label for="user">Usuario:</label>
             <input type="text" name="user" placeholder="Tu Usuario" id="user" required>
 
@@ -95,3 +94,5 @@ incluirTemplate("header");
 
 incluirTemplate("footer");
 ?>
+
+
