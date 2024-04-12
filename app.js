@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (){
     botonMesa();
+    mostrarAlertaExito();
 })
 
 
@@ -27,5 +28,16 @@ function botonMesa (){
             }
         });
     });
+}
+
+function mostrarAlertaExito() {
+    const alertaExito = document.querySelector('.alerta.exito');
+    if (alertaExito) {
+        alertaExito.style.display = 'block'; // Mostrar la alerta
+
+        setTimeout(function() {
+            alertaExito.style.display = 'none';
+        }, 3000);
+    }
 }
 

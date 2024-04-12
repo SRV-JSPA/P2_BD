@@ -108,17 +108,10 @@ img  {
     margin: 0;
 }
 .footer {
+    background-color: var(--negro);
     margin-top: 4rem;
     padding-bottom: 3rem;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(171, 163, 135);
-    padding: 10px;
-    text-align: center;
-    box-sizing: border-box;
 }
-
 
 .copyright {
     color: white;
@@ -147,7 +140,6 @@ img  {
 .alerta.exito {
     background-color: #00ff00; 
 }
-
 .formulario {
     background-color: var(--blanco);
     margin: -5rem auto 0 auto;
@@ -385,32 +377,6 @@ img  {
    
 }
 
-.cocina {
-    width: 20cm;
-    height: auto;
-    margin: 0 auto;
-    background-color: rgb(239, 220, 182);
-    box-sizing: border-box;
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px rgb(253, 240, 212);
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    padding-left: 15px;
-  }
-
-  .bar {
-    width: 20cm;
-    height: auto;
-    margin: 0 auto;
-    background-color: rgb(205, 239, 182);
-    box-sizing: border-box;
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px rgb(226, 253, 212);
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    padding-left: 15px;
-  }
-  
-
+.personal-editar:hover {
+    background-color: rgb(0, 8, 180);
+}
