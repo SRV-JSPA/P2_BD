@@ -326,6 +326,23 @@ img  {
     height: 300px; 
 }
 
+.personal-agregar {
+    background-color: green;
+    color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    padding-bottom: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    transition: all 300ms ease;
+    cursor: default;
+    margin: 0 auto;
+    width: 300px; 
+    height: 300px; 
+}
+
 .personal-borrar {
     background-color: red; 
     color: white; 
