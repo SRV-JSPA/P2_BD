@@ -397,6 +397,19 @@ img  {
     font-family: "Times New Roman", Times, serif;
     padding-left: 15px;
   }
+
+  .bar {
+    width: 20cm;
+    height: auto;
+    margin: 0 auto;
+    background-color: rgb(205, 239, 182);
+    box-sizing: border-box;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(226, 253, 212);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    padding-left: 15px;
+  }
   
 
-  
