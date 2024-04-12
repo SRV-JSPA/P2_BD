@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>personal</h1>
-</body>
-</html>
+<?php
+require "../includes/database.php";
+require '../includes/funciones.php';
+
+incluirTemplate('header', $inicio = true);
+?>
+
+<main class="personal">
+    <section class="personal-seccion" >
+        <p class="personal-nombre">Nombre persona
+        class="personal-puesto">Puesto </p>
+        <p class="personal-puesto">Puesto </p>
+    </section>
+</main>
+
+<?php
+incluirTemplate('footer');
+?>
