@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>bar</h1>
-</body>
-</html>
+<?php
+require "../includes/database.php";
+require '../includes/funciones.php';
+
+incluirTemplate('header', $inicio = true);
+?>
+
+<main class="Bar">
+<center> 
+<h1>Lista de bebidas a preparar</h1>
+</center> 
+<section class="bar">
+        <p>Bebida</p>
+    </section>
+</main>
+
+<?php
+incluirTemplate('footer');
+?>

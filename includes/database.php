@@ -5,7 +5,7 @@ function conectarBD() {
     $port = "5432"; 
     $dbname = "dbphp";
     $user = "postgres";
-    $password = "16022004";
+    $password = "resusan120104";
 
     try {
         $db = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
