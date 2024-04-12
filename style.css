@@ -313,6 +313,7 @@ img  {
 }
 
 .personal-seccion {
+    position: relative;
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 2rem;
@@ -325,25 +326,7 @@ img  {
     height: 300px; 
 }
 
-.personal-nombre {
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
-    color: #78451a;
-    font-size: 2rem;
-    margin-top: 150px; 
-}
-
-.personal-puesto {
-    display: flex;
-    justify-content: center;
-    font-weight: 500;
-    color: #78451a;
-    font-size: 2rem;
-    margin-top: 170px; 
-}
-
-.personal-borrar{
+.personal-borrar {
     background-color: red; 
     color: white; 
     padding: 0.5rem 1rem; 
@@ -364,4 +347,5 @@ img  {
     transition: background-color 0.3s;
     position: absolute;
     right: 10px;
+   
 }
