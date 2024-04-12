@@ -344,9 +344,24 @@ img  {
 }
 
 .personal-borrar{
-
+    background-color: red; 
+    color: white; 
+    padding: 0.5rem 1rem; 
+    border-radius: 0.5rem;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; 
 }
 
 .personal-editar {
-
+    background-color: rgb(0, 8, 255); 
+    color: white; 
+    padding: 0.5rem 1rem; 
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    right: 10px;
 }
