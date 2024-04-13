@@ -448,3 +448,11 @@ img  {
     align-content: center;
     text-align: center;
 }
+
+.campoMesero {
+    display: none;
+}
+
+.campoMeseroVista {
+    display: block;
+}
