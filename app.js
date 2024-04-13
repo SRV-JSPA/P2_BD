@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function (){
     botonMesa();
     mostrarAlertaExito();
     activarBotonEditarPersonal();
+    activarBotonEliminarPersonal();
 })
 
 
@@ -62,6 +63,25 @@ function activarBotonEditarPersonal() {
             if (idPersonal) {
                 // Redireccionar a editar-personal.php con el id del personal
                 window.location.href = `editar-personal.php?id=${idPersonal}`;
+            } else {
+                console.error("No se encontró el id del personal");
+            }
+        });
+    });
+}
+
+function activarBotonEliminarPersonal() {
+    //Seleccionar botones
+    const botonesEliminarPersonal = document.querySelectorAll(".personal-borrar");
+
+    botonesEliminarPersonal.forEach(boton => {
+        boton.addEventListener("click", function() {
+            // Obtener el id del personal desde el botón
+            const idPersonal = boton.dataset.id;
+
+            if (idPersonal) {
+                // Redireccionar a editar-personal.php con el id del personal
+                window.location.href = `borrar-personal.php?id=${idPersonal}`;
             } else {
                 console.error("No se encontró el id del personal");
             }
