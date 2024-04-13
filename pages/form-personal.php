@@ -27,9 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         
         if($stmt ->rowCount() > 0){
-            header('Location: /pages/personal.php?succes=1');
+            header('Location: /pages/personal.php?success=1');
         }
-
     }
 }
 

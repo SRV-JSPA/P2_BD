@@ -9,10 +9,7 @@ if (!isset($_SESSION)) {
 }
 
 
-$exitoMostrado = isset($_SESSION['exito_mostrado']) ? $_SESSION['exito_mostrado'] : false;
-
-
-$exito = $exitoMostrado ? false : (isset($_GET["success"]) ? $_GET["success"] : false);
+$exito = $_GET['success'] ?? null;
 
 
 if ($exito !== false) {
@@ -29,14 +26,16 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
+
+
 ?>
-<?php if ($exito = 1) { ?>
+<?php if ($exito == '1') { ?>
         <div class="alerta exito">
             <p>Se ha agregado correctamente</p>
         </div>
-    <?php }else { ?>
+    <?php }elseif ($exito == '2'){ ?>
         <div class="alerta exito">
-            <p>No se pudo agregar de forma exitosa</p>
+            <p>Se actualizó correctamente</p>
         </div>
      <?php } ?>   
 <main class="personal">
@@ -48,7 +47,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>Nombre y apellido: <?php echo $dato['nombre'] ?></p>
             <p>Puesto: <?php echo $dato['rol'] ?> </p>
             <button class="personal-borrar">X</button>
-            <button class="personal-editar" onclick="window.location.href = 'editar-personal.php';">...</button>
+            <button class="personal-editar" data-id="<?php echo $dato['id_personal']; ?>">...</button>
         </section>
     <?php } ?>
 </main>
