@@ -456,3 +456,11 @@ img  {
 .campoMeseroVista {
     display: block;
 }
+
+.reportes {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
