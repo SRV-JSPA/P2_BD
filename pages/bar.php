@@ -10,9 +10,9 @@ incluirTemplate('header', $inicio = true);
     <center>
         <h1>Lista de Bebidas a Preparar</h1>
     </center>
-    <section class="bar">
+    <section class="cocina">
         <?php
-        // Consulta para obtener los ítems pendientes en la tabla Detalle_Pedido
+      
         $query = "SELECT dp.id_detalle_pedido, i.nombre, dp.cantidad, p.hora
                   FROM Detalle_Pedido dp
                   JOIN Item i ON dp.id_item = i.id_item
@@ -25,8 +25,11 @@ incluirTemplate('header', $inicio = true);
             if ($resultado->rowCount() > 0) {
                 // Mostrar los ítems pendientes en la sección de Bebida
                 while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<div class='fila'>";
-                    echo "<p>ID: " . $fila['id_detalle_pedido'] . " - Nombre: " . $fila['nombre'] . " - Cantidad: " . $fila['cantidad'] ." - Hora: " . $fila['hora'] . "</p>";
+                    echo "<div class='cocina-item'>";
+                    echo "<p><strong>ID:</strong> " . $fila['id_detalle_pedido'] . "</p>";
+                    echo "<p><strong>Nombre:</strong> " . $fila['nombre'] . "</p>";
+                    echo "<p><strong>Cantidad:</strong> " . $fila['cantidad'] . "</p>";
+                    echo "<p><strong>Hora:</strong> " . $fila['hora'] . "</p>";
                     echo "<input type='checkbox' class='check'>";
                     echo "</div>";
                 }
@@ -40,6 +43,7 @@ incluirTemplate('header', $inicio = true);
         ?>
     </section>
 </main>
+
 
 <?php
 incluirTemplate('footer');
