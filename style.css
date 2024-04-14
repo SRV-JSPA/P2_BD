@@ -461,3 +461,131 @@ img  {
 .campoMeseroVista {
     display: block;
 }
+
+.reportes {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-platos {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-horario {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-promedio {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-quejasp {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-quejasper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.form-reporte-eficiencia {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.boton-reporte-platos {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
+
+.boton-reporte-horario {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
+
+.boton-reporte-promedio {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
+
+.boton-reporte-quejasper {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
+
+.boton-reporte-quejasp {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
+
+.boton-reporte-eficiencia {
+    background-color: #71B100; 
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 2rem auto;
+}
