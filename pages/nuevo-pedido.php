@@ -18,7 +18,7 @@ incluirTemplate('header', $inicio = true);
             <?php echo htmlspecialchars($error); ?>
         </div>
     <?php endforeach; ?>
-    <h1>Registro</h1>
+    <h1>Pedido</h1>
 
     <form class="formulario" method="POST"> 
         <fieldset>
