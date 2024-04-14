@@ -49,6 +49,11 @@ img  {
     width: 100%;
 }
 
+.centro {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .contenedor {
     width: 30cm;;
     margin: 0 auto;

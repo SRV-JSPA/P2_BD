@@ -12,6 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $rol = $_POST['rol'];
     $id_area = intval($_POST['area']);
+    $usuario = $_POST['usuario'];
+    $contraseña = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+
+
+
 
     if (!$nombre) {
         $errores[] = "El nombre es obligatorio";
@@ -26,11 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $db->prepare($query);
         $stmt->execute();
 
+        $queryInfo = "SELECT id_personal FROM personal WHERE nombre = '$nombre'";
+        $stmtInfo = $db->prepare($queryInfo);
+        $stmtInfo->execute();
+
+        $id_personalInfo = $stmtInfo->fetch(PDO::FETCH_ASSOC);
+
+        $id_personal = $id_personalInfo['id_personal'];
+
+        $usuariosQuery = "INSERT INTO usuarios (usuario, contrasena, id_personal) VALUES ('$usuario', '$contraseña', '$id_personal'); ";
+        $stmtUsuarios = $db->prepare($usuariosQuery);
+        $stmtUsuarios->execute();
+
         if ($rol == 'Mesero') {
 
             if ($stmt->rowCount() > 0) {
-
-                $id_personal = $db->lastInsertId();
 
 
                 $meseroQuery = "INSERT INTO mesero (id_personal, nombre, id_area_asignada) VALUES ('$id_personal', '$nombre', '$id_area')";
@@ -50,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
 
-            if ($stmt->rowCount() > 0) {
+            if ($stmt->rowCount() > 0 && $stmtUsuarios->rowCount() > 0) {
                 header('Location: /pages/personal.php?success=1');
                 exit;
             } else {
@@ -89,6 +104,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="area">ID área asignada:</label>
                 <input type="number" name="area" placeholder="ID área asignada" id="area">
             </div>
+            <div class="centro">
+                <?php echo ("--------------------- y ---------------------") ?>
+            </div>
+
+
+
+
+            <label for="usuario">Usuario:</label>
+            <input type="text" name="usuario" placeholder="Usuario" id="usuario">
+
+            <label for="contraseña">Contraseña:</label>
+            <input type="text" name="contraseña" placeholder="Contraseña" id="contraseña">
+
 
         </fieldset>
 

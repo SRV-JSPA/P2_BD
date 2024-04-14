@@ -7,12 +7,32 @@ $db = conectarBD();
 incluirTemplate('header', $inicio = true);
 
 if (isset($_GET['eliminar'])) {
-    $id = $_GET['id']; 
+    $id = intval($_GET['id']);
+
+    $info = "SELECT rol FROM personal WHERE id_personal = $id";
+    $stmtInfo = $db->prepare($info);
+    $stmtInfo->execute();
+    $resultado = $stmtInfo->fetch(PDO::FETCH_ASSOC);
+    $rol = $resultado['rol'];
+    
+    if ($rol == 'Mesero') {
+        $queryMesero = "DELETE FROM mesero WHERE id_personal = $id";
+        $stmtMesero = $db->prepare($queryMesero);
+        $stmtMesero->execute();
+    }
+
+    $usuarioQuery = "DELETE FROM usuarios WHERE id_personal = $id";
+    $stmtUsuario = $db->prepare($usuarioQuery);
+    $stmtUsuario->execute();
+
+ 
     $sql = "DELETE FROM personal WHERE id_personal = $id"; 
     $stmt  = $db->prepare($sql);
     $stmt->execute();
 
-    if($stmt -> rowCount() > 0){
+   
+
+    if($stmt -> rowCount() > 0 && $stmtUsuario->rowCount() > 0 && $stmtMesero->rowCount() > 0){
         header('Location: /pages/personal.php?success=3');
     }
 }
