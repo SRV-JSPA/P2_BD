@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $db->prepare($query);
         $stmt->execute();
 
-        
         if($stmt->rowCount() > 0){
             header('Location: /pages/personal.php?success=2');
             exit; 

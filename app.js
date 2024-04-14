@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarAlertaExito();
   activarBotonEditarPersonal();
   activarBotonEliminarPersonal();
+  mostrarOcultarCampo();
 });
 
 function botonMesa() {
