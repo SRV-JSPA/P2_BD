@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   activarBotonEditarPersonal();
   activarBotonEliminarPersonal();
   mostrarOcultarCampo();
+
 });
 
 function botonMesa() {
@@ -90,15 +91,20 @@ function activarBotonEliminarPersonal() {
 function mostrarOcultarCampo() {
   const rol = document.getElementById("rol");
 
-  rol.addEventListener("change", () => {
-    const valor = rol.value;
-    let campoMesero = document.querySelector(".campoMesero");
+  if (rol) {
+    rol.addEventListener("change", () => {
+      const valor = rol.value;
+      let campoMesero = document.querySelector(".campoMesero");
 
-    if (valor === "Mesero") {
-      if (campoMesero.classList.contains("campoMesero")) {
-        campoMesero.classList.remove("campoMesero");
-        campoMesero.classList.add("campoMeseroVista");
+      if (valor === "Mesero") {
+        if (campoMesero) {
+          campoMesero.classList.remove("campoMesero");
+          campoMesero.classList.add("campoMeseroVista");
+        }
       }
-    }
-  });
+    });
+  }
 }
+
+
+
