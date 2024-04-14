@@ -390,29 +390,46 @@ img  {
     width: 20cm;
     height: auto;
     margin: 0 auto;
-    background-color: rgb(239, 220, 182);
-    box-sizing: border-box;
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px rgb(253, 240, 212);
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
     padding-left: 15px;
+    font-family: "Times New Roman", Times, serif;
+    background-color: rgb(239, 223, 182);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(244, 233, 205);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: large;
   }
 
-  .bar {
+
+
+.fila {
     width: 20cm;
     height: auto;
     margin: 0 auto;
+    padding-left: 15px;
+    font-family: "Times New Roman", Times, serif;
     background-color: rgb(205, 239, 182);
-    box-sizing: border-box;
-    text-align: left;
+    margin-bottom: 10px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 10px 10px 5px rgb(226, 253, 212);
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    padding-left: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: large;
 }
+
+.check {
+    transform: scale(2);
+    margin-left: auto; 
+    align-self: center;
+}
+
+
+
 
 .contenedor-eliminar {
     width: 30cm;;

@@ -8,19 +8,16 @@ incluirTemplate('header', $inicio = true);
 
 <main class="Cocina">
     <center>
-        <h1>Lista de Platos a Cocinar</h1>
+        <h1>Lista de Bebidas a Preparar</h1>
     </center>
-    <section class="cocina">
+    <section class="COCINA">
         <?php
         // Consulta para obtener los ítems pendientes en la tabla Detalle_Pedido
-        $query = "SELECT dp.id_detalle_pedido, i.nombre, dp.cantidad
+        $query = "SELECT dp.id_detalle_pedido, i.nombre, dp.cantidad, p.hora
                   FROM Detalle_Pedido dp
                   JOIN Item i ON dp.id_item = i.id_item
-                  WHERE dp.id_pedido IN (
-                      SELECT id_pedido
-                      FROM Pedido
-                      WHERE id_pedido = (SELECT MAX(id_pedido) FROM Pedido)
-                  )
+                  JOIN Pedido p ON dp.id_pedido = p.id_pedido
+                  WHERE i.tipo_item = 'Platillo'
                   ORDER BY dp.id_detalle_pedido";
 
         try {
@@ -28,10 +25,13 @@ incluirTemplate('header', $inicio = true);
             if ($resultado->rowCount() > 0) {
                 // Mostrar los ítems pendientes en la sección de Cocina
                 while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<p>ID: " . $fila['id_detalle_pedido'] . " - Nombre: " . $fila['nombre'] . " - Cantidad: " . $fila['cantidad'] . "</p>";
+                    echo "<div class='cocina'>";
+                    echo "<p>ID: " . $fila['id_detalle_pedido'] . " - Nombre: " . $fila['nombre'] . " - Cantidad: " . $fila['cantidad'] ." - Hora: " . $fila['hora'] . "</p>";
+                    echo "<input type='checkbox' class='check'>";
+                    echo "</div>";
                 }
             } else {
-                echo "<p>No hay platos pendientes.</p>";
+                echo "<p>No hay comidas pendientes.</p>";
             }
         } catch (PDOException $e) {
             echo "Error al ejecutar la consulta: " . $e->getMessage();

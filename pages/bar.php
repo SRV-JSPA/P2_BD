@@ -6,31 +6,29 @@ $db = conectarBD();
 incluirTemplate('header', $inicio = true);
 ?>
 
-
 <main class="Bar">
     <center>
-        <h1>Lista de bebidas a preparar</h1>
+        <h1>Lista de Bebidas a Preparar</h1>
     </center>
     <section class="bar">
         <?php
         // Consulta para obtener los ítems pendientes en la tabla Detalle_Pedido
-        $query = "SELECT dp.id_detalle_pedido, i.nombre, dp.cantidad
+        $query = "SELECT dp.id_detalle_pedido, i.nombre, dp.cantidad, p.hora
                   FROM Detalle_Pedido dp
                   JOIN Item i ON dp.id_item = i.id_item
-                  WHERE dp.id_pedido IN (
-                      SELECT id_pedido
-                      FROM Pedido
-                      WHERE id_pedido = (SELECT MAX(id_pedido) FROM Pedido)
-                  )
-                  AND i.tipo_item = 'Bebida'
+                  JOIN Pedido p ON dp.id_pedido = p.id_pedido
+                  WHERE i.tipo_item = 'Bebida'
                   ORDER BY dp.id_detalle_pedido";
 
         try {
             $resultado = $db->query($query);
             if ($resultado->rowCount() > 0) {
-                // Mostrar los ítems pendientes en la sección de Bar
+                // Mostrar los ítems pendientes en la sección de Bebida
                 while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<p>ID: " . $fila['id_detalle_pedido'] . " - Nombre: " . $fila['nombre'] . " - Cantidad: " . $fila['cantidad'] . "</p>";
+                    echo "<div class='fila'>";
+                    echo "<p>ID: " . $fila['id_detalle_pedido'] . " - Nombre: " . $fila['nombre'] . " - Cantidad: " . $fila['cantidad'] ." - Hora: " . $fila['hora'] . "</p>";
+                    echo "<input type='checkbox' class='check'>";
+                    echo "</div>";
                 }
             } else {
                 echo "<p>No hay bebidas pendientes.</p>";
