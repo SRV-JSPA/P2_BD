@@ -115,7 +115,7 @@ SELECT setval('metodopago_id_metodo_pago_seq', 1, false);
 
 CREATE TABLE IF NOT EXISTS Encuesta ( --Recopila retroalimentación de los clientes sobre los meseros y el servicio proporcionado--
     id_encuesta SERIAL PRIMARY KEY,
-    id_mesero INTEGER NOT NULL,
+    id_mesero INTEGER,
     id_pedido INTEGER NOT NULL,
     amabilidad INTEGER CHECK (amabilidad BETWEEN 1 AND 5),
     exactitud INTEGER CHECK (exactitud BETWEEN 1 AND 5),
