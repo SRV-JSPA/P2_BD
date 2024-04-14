@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bindParam(1, $user, PDO::PARAM_STR);
             $stmt->execute();
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-            
 
             if ($usuario) {
                 if (password_verify($password, $usuario['contrasena'])) {
