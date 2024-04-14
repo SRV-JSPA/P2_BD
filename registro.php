@@ -12,7 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre']; 
     $rol = $_POST['rol']; 
     $usuario = $_POST['user'];
-    $contraseña = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+    
+    // $contraseña = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+    $contraseña = $_POST['password'];
 
     try {
         // Verifica si el usuario ya existe en la base de datos

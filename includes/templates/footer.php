@@ -6,7 +6,7 @@
                 </a>
             
                 <nav class="navegacion">
-                    <a href="#"  class='navegacion__enlace'>navegacion</a>
+                    <a href="../../pages/"  class='navegacion__enlace'>Menu Principal</a>
                 </nav>
                 <p class="copyright">Todos los derechos Reservados <?php echo date("Y"); ?> &copy;</p>
             </div>

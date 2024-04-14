@@ -50,7 +50,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img src='../img/mesa_r.png' alt="Icono" class="img-mesa" />
 
                 <div class="c-boton">
-                    <button class="boton-verde">✓</button>
+                    <button class="boton-verde" onclick="window.location.href = '/pages/pedidos.php?id=<?php echo $dato['id_mesa']; ?>'" >✓</button>
                     <button class="boton-rojo">྾</button>
                 </div>
 
@@ -91,7 +91,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <img src='../img/mesa_r.png' alt="Icono" class="img-mesa" />
 
                     <div class="c-boton">
-                        <button class="boton-verde">✓</button>
+                    <button class="boton-verde" onclick="window.location.href = '/pages/pedidos.php?id=<?php echo $dato['id_mesa']; ?>'" >✓</button>
                         <button class="boton-rojo">྾</button>
                     </div>
 
