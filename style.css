@@ -401,8 +401,13 @@ img  {
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 10px 10px 5px rgb(226, 253, 212);
-    position: relative; /* Añade esta línea */
+    position: relative;
 }
+
+.hidden {
+     display: none; 
+    }
+
 
 .check {
     position: absolute;
@@ -411,7 +416,6 @@ img  {
     height: 30px;
     width: 30px;
 }
-
 
 .fila {
     width: 20cm;

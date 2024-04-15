@@ -45,6 +45,8 @@ incluirTemplate('header', $inicio = true);
 </main>
 
 
+<script src="../app.js"></script>
+
 <?php
 incluirTemplate('footer');
 ?>

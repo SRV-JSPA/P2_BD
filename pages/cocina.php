@@ -31,7 +31,7 @@ incluirTemplate('header', $inicio = true);
                     echo "<p><strong>Cantidad:</strong> " . $fila['cantidad'] . "</p>";
                     echo "<p><strong>Hora:</strong> " . $fila['hora'] . "</p>";
                     ?>
-                    <input type='checkbox' class='check'>";
+                    <input type='checkbox' class='check'>
                     <?php
                     echo "</div>";
                 }
@@ -46,6 +46,7 @@ incluirTemplate('header', $inicio = true);
     </section>
 </main>
 
+<script src="../app.js"></script>
 
 <?php
 incluirTemplate('footer');

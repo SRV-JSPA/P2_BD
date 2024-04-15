@@ -106,6 +106,22 @@ function mostrarOcultarCampo() {
 }
 
 
+// Obtener todos los checkboxes
+const checkboxes = document.querySelectorAll('.check');
 
+// Agregar un evento de clic a cada checkbox
+checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('click', ocultarContenedorTemporalmente);
+});
 
-
+// Función para ocultar el contenedor temporalmente al hacer clic en el checkbox
+function ocultarContenedorTemporalmente(event) {
+    const contenedor = event.target.parentNode;
+    if (event.target.checked) {
+        contenedor.style.display = 'none';
+        // Esperar 5 segundos 
+        setTimeout(() => {
+            contenedor.remove();
+        }, 5000);
+    }
+}
