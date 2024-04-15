@@ -6,6 +6,10 @@ incluirTemplate('header', $inicio = true);
 
 $db = conectarBD();
 
+$id_pedido = $_GET['id'] ?? null;
+
+
+
 $query = "SELECT * FROM item;";
 $stmt = $db->prepare($query);
 $stmt->execute();
@@ -39,7 +43,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td> <?php echo $row['descripcion']; ?></td>
                     <td>$ <?php echo $row['precio']; ?></td>
                     <td>
-                        <a href="#" class="boton-celeste-block" >Agregar al menu</a>
+                    <button class="boton-celeste-block" onclick="window.location.href = '/pages/agregar-insumo-pedido.php?idItem=<?php echo $row['id_item']; ?>&idPedido=<?php echo $id_pedido; ?>'">Agregar al pedido</button>
                     </td>
                 </tr>
                 <?php endforeach; ?>

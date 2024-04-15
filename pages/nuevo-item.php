@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         </fieldset>
 
-        <input type="submit" value="Registro" class="boton-verde">
+        <input type="submit" value="Agregar" class="boton-verde">
     </form>
 </main>
 

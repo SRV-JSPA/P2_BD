@@ -6,9 +6,31 @@ incluirTemplate('header', $inicio = true);
 
 $db = conectarBD();
 
-
 $exito = $_GET['success'] ?? NULL;
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$primer_click = !isset($_SESSION['agregar_insumo_click']);
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['agregar_insumo'])) {
+
+    $id_pedido = $_POST['id_pedido'] ?? null;
+
+
+    if (!empty($id_pedido)) {
+        if ($primer_click) {
+            $_SESSION['agregar_insumo_click'] = true;
+        } else {
+            $_SESSION['agregar_insumo_click'] = false;
+        }
+
+        header("Location: /pages/agregar-insumo.php?id=" . $id_pedido);
+        exit;
+    }
+}
 
 $queryPedido = "SELECT * FROM pedido";
 $stmtPedido = $db->prepare($queryPedido);
@@ -21,6 +43,10 @@ $pedido = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
     <div class="alerta exito">
         <p>Se ha creado correctamente</p>
     </div>
+<?php } elseif ($exito == '2') { ?>
+    <div class="alerta exito">
+        <p>Se agregó el ítem correctamente</p>
+    </div>
 <?php } ?>
 
 <main class="pedidos">
@@ -32,7 +58,10 @@ $pedido = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
                 <p>Cantidad - nombre ítem</p>
                 <p>Área: Mesa <?php echo $pd['id_mesa']; ?></p>
                 <p>Mesero: <?php echo $pd['id_mesero']; ?></p>
-                <button class="boton-verde" onclick="window.location.href = '/pages/agregar-insumo.php'" >Agregar insumo</button>
+                <form method="POST">
+                    <input type="hidden" name="id_pedido" value="<?php echo $pd['id_pedido']; ?>">
+                    <button type="submit" name="agregar_insumo" class="boton-verde">Agregar insumo</button>
+                </form>
             </section>
         <?php endforeach; ?>
     <?php else : ?>
@@ -40,7 +69,7 @@ $pedido = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 </main>
 
-<script src="../app.js" ></script>
+<script src="../app.js"></script>
 
 <?php
 incluirTemplate('footer');
