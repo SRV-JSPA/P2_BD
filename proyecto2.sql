@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Pedido (--Realiza un seguimiento de los pedidos reali
     id_pedido SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
 	hora TIME DEFAULT CURRENT_TIME NOT NULL,
-	horafin TIME DEFAULT CURRENT_TIME NOT NULL,
+	horafin TIME DEFAULT CURRENT_TIME,
     id_mesa INTEGER NOT NULL,
     id_mesero INTEGER,
     id_cliente INTEGER NOT NULL,

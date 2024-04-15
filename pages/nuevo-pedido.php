@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_cliente = $stmt_id_cliente->fetchAll(PDO::FETCH_ASSOC);
             $id_cliente = intval($id_cliente[0]['id_cliente']);
 
-            $queryPedido = "INSERT INTO pedido (fecha, hora, id_mesa, id_mesero, id_cliente, subtotal) VALUES ('$fecha', CURRENT_TIME, $id, $id_mesero, $id_cliente, 0);";
+            $queryPedido = "INSERT INTO pedido (fecha, hora, horafin, id_mesa, id_mesero, id_cliente, subtotal) VALUES ('$fecha', CURRENT_TIME, NULL , $id, $id_mesero, $id_cliente, 0);";
             $stmt_query_pedido = $db->prepare($queryPedido);
             $stmt_query_pedido->execute();
             $pedido = $stmt_query_pedido->fetchAll(PDO::FETCH_ASSOC);

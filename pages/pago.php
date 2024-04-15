@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt_metodo_pago->rowCount() > 0) {
             header("Location: /pages/factura.php?idPedido={$id_pago}");
         }
-
     } else {
         $query_metodo_pago = "INSERT INTO MetodoPago (id_contribucion, metodo_pago, monto) VALUES (NULL, '$metodo', $total );";
         $stmt_metodo_pago = $db->prepare($query_metodo_pago);

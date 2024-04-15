@@ -43,6 +43,7 @@ incluirTemplate('header', $inicio = true);
         mostrarSeccionPlatillosEspera();
         mostrarSeccionBebidasEspera();
         mostrarReportes();
+        mostrarItems();
     }
 
     function mostrarSeccionMesas()
