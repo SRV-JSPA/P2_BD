@@ -18,10 +18,13 @@ php -m | findstr pdo_pgsql
 Sigue estos pasos para instalar y ejecutar el proyecto:
 
 Descarga el código fuente del proyecto.
+
 Descomprime el archivo ZIP en la carpeta de tu elección.
+
 Navega a la carpeta del proyecto usando la terminal o línea de comandos.
+
 Ejecuta el servidor integrado de PHP:
-shell
+
 php -S localhost:5000
 
 Asegurate de cambiar los datos de tu base de datos de PostgreSQL en el archivo de database.php
