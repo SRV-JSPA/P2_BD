@@ -79,7 +79,7 @@ SELECT setval('item_id_item_seq', 1, false);
 CREATE TABLE IF NOT EXISTS Detalle_Pedido ( --Relaciona los pedidos con los items específicos--
     id_detalle_pedido SERIAL PRIMARY KEY, 
     id_pedido INTEGER NOT NULL,
-    id_item INTEGER NOT NULL,
+    id_item INTEGER,
     cantidad INTEGER NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido),
     FOREIGN KEY (id_item) REFERENCES Item(id_item)

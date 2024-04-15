@@ -128,6 +128,20 @@ incluirTemplate('header', $inicio = true);
         </section>
         <?php
     }
+
+    function mostrarItems()
+    {
+        ?>
+        <section class="menu-seccion">
+            <p class="titulo-menu">Items</p>
+            <div className="img-menu">
+                <a href="/pages/insumos.php">
+                    <img src='../img/menu.png' alt="Icono" />
+                </a>
+            </div>
+        </section>
+        <?php
+    }
     ?>
 
 
