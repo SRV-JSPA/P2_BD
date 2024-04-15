@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   activarBotonEditarPersonal();
   activarBotonEliminarPersonal();
   mostrarOcultarCampo();
+  mostrarOcultarCampoPago();
 });
 
 function botonMesa() {
@@ -124,4 +125,22 @@ function ocultarContenedorTemporalmente(event) {
             contenedor.remove();
         }, 5000);
     }
+}
+
+function mostrarOcultarCampoPago() {
+  const pago = document.getElementById("rol");
+
+  if (pago) {
+    pago.addEventListener("change", () => {
+      const valor = pago.value;
+      let campoPago = document.querySelector(".campoPagoPartes");
+
+      if (valor === "Por partes") {
+        if (campoPago) {
+          campoPago.classList.remove("campoPagoPartes");
+          campoPago.classList.add("campoPagoVista");
+        }
+      }
+    });
+  }
 }

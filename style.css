@@ -700,3 +700,11 @@ table.items th {
     background-color: blue;
         cursor: pointer;
 }
+
+.campoPagoPartes {
+    display: none;
+}
+
+.campoPagoVista {
+    display: block;
+}
