@@ -612,3 +612,87 @@ img  {
     display: block;
     margin: 2rem auto;
 }
+
+.contenedor-item {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.seccion-item {
+    margin-top: calc(5rem / 2);
+    margin-bottom: calc(5rem / 2);
+}
+
+table.items {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.items thead {
+    background-color: green;
+}
+
+table.items th {
+    color: white;
+    padding: 2rem;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.boton-rojo-block {
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 5rem / 2;
+    display: block;
+    border: none;
+    width: 100%;
+}
+
+.boton-rojo-block:hover {
+    background-color: darkred;
+        cursor: pointer;
+}
+
+.boton-purpura-block {
+    background-color: rgb(234, 72, 234);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 5rem / 2;
+    display: block;
+    border: none;
+    width: 100%;
+}
+
+.boton-purpura-block:hover {
+    background-color: darkmagenta;
+        cursor: pointer;
+}
+
+.boton-celeste-block {
+    background-color: lightblue;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 5rem / 2;
+    display: block;
+    border: none;
+    width: 100%;
+}
+
+.boton-celeste-block:hover {
+    background-color: blue;
+        cursor: pointer;
+}

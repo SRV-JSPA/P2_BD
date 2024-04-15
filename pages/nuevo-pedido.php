@@ -37,6 +37,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $direccion = $_POST['direccion'];
             $fecha = $_POST['fecha'];
 
+            if (!$nit) {
+                $errores[] = "El nit es obligatorio o no es válido";
+                error_log("Inicio de sesión: Se ha ingresado un usuario vacío o inválido.");
+            }
+        
+            if (!$nombre) {
+                $errores[] = "El nombre es obligatorio";
+                error_log("Inicio de sesión: Se ha ingresado un password vacío.");
+            }
+
+            if (!$direccion) {
+                $errores[] = "La direccion es obligatorio o no es válido";
+                error_log("Inicio de sesión: Se ha ingresado un usuario vacío o inválido.");
+            }
+        
+            if (!$fecha) {
+                $errores[] = "La fecha es obligatorio";
+                error_log("Inicio de sesión: Se ha ingresado un password vacío.");
+            }
+
             $queryCliente = "INSERT INTO cliente (nit, nombre, direccion) VALUES ('$nit', '$nombre', '$direccion');";
             $stmtCliente = $db->prepare($queryCliente);
             $stmtCliente->execute();
@@ -90,6 +110,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $direccion = $_POST['direccion'];
             $fecha = $_POST['fecha'];
             $id_mesa = $_POST['mesa'];
+
+            if (!$nit) {
+                $errores[] = "El nit es obligatorio o no es válido";
+                error_log("Inicio de sesión: Se ha ingresado un usuario vacío o inválido.");
+            }
+        
+            if (!$nombre) {
+                $errores[] = "El nombre es obligatorio";
+                error_log("Inicio de sesión: Se ha ingresado un password vacío.");
+            }
+
+            if (!$direccion) {
+                $errores[] = "La direccion es obligatorio o no es válido";
+                error_log("Inicio de sesión: Se ha ingresado un usuario vacío o inválido.");
+            }
+        
+            if (!$fecha) {
+                $errores[] = "La fecha es obligatorio";
+                error_log("Inicio de sesión: Se ha ingresado un password vacío.");
+            }
+
+            if (!$id_mesa) {
+                $errores[] = "El ID de la mesa es obligatorio";
+                error_log("Inicio de sesión: Se ha ingresado un password vacío.");
+            }
 
 
             $queryCliente = "INSERT INTO cliente (nit, nombre, direccion) VALUES ('$nit', '$nombre', '$direccion');";

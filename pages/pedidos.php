@@ -32,6 +32,7 @@ $pedido = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
                 <p>Cantidad - nombre ítem</p>
                 <p>Área: Mesa <?php echo $pd['id_mesa']; ?></p>
                 <p>Mesero: <?php echo $pd['id_mesero']; ?></p>
+                <button class="boton-verde" onclick="window.location.href = '/pages/agregar-insumo.php'" >Agregar insumo</button>
             </section>
         <?php endforeach; ?>
     <?php else : ?>
