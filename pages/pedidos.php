@@ -96,7 +96,9 @@ $pedidos = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
                     <input type="hidden" name="id_pedido" value="<?php echo $pd['id_pedido']; ?>">
                     <button type="submit" name="agregar_insumo" class="boton-verde">Agregar insumo</button>
                 </form>
-                <button onclick="window.location.href = '/pages/pdf-pedido.php?id=<?php echo 1 ?>'" class="boton-verde"><?php echo ($bandera_pdf ? 'Imprimir factura' : 'Generar pedido PDF'); ?></button>
+                <button onclick="window.location.href = '/pages/pdf-pedido.php?id=<?php echo $pd['id_pedido']; ?>'" class="boton-verde">Generar vista previa de Pedido</button>
+                <button class="boton-verde">Cerrar la cuenta</button>
+                <button onclick="window.location.href = '/pages/pago.php?id=<?php echo $pd['id_pedido']; ?>&total=<?php echo $total_general  ?>'"  class="boton-verde">Ingresar pago</button>
             </section>
         <?php endforeach; ?>
     <?php else : ?>
