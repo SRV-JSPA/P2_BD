@@ -6,7 +6,7 @@ incluirTemplate('header', $inicio = true);
 ?>
 
 <main class="form-reporte-quejasp">
-    <h2>Reporte de las quejas agrupadas por persona</h2>
+    <h2>Reporte de las quejas agrupadas por plato</h2>
 
     <form method="post">
         <label for="fecha_inicio">Fecha de Inicio:</label>
