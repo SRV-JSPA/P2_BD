@@ -26,7 +26,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     switch ($rol) {
         case 'Gerente':
-            todasLasMesas($datos);
+            todasLasMesas($datos, $id);
             break;
 
         case 'Mesero':
@@ -34,14 +34,14 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             break;
 
         case 'Host':
-            todasLasMesas($datos);
+            todasLasMesas($datos, $id);
             break;
 
         default:
             break;
     }
 
-    function todasLasMesas($datos)
+    function todasLasMesas($datos, $id)
     {
         foreach ($datos as $dato) {
     ?>
@@ -50,8 +50,8 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img src='../img/mesa_r.png' alt="Icono" class="img-mesa" />
 
                 <div class="c-boton">
-                    <button class="boton-verde" onclick="window.location.href = '/pages/pedidos.php?id=<?php echo $dato['id_mesa']; ?>'" >✓</button>
-                    <button class="boton-rojo">྾</button>
+                    <button class="boton-verde">✓</button>
+                    <button class="boton-rojo" onclick="window.location.href = '/pages/nuevo-pedido.php?id=<?php echo $dato['id_mesa']; ?>&idpersonal=<?php echo $id; ?>'">྾</button>
                 </div>
 
                 <p>Capacidad: <?php echo $dato['capacidad']  ?></p>
@@ -91,8 +91,8 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <img src='../img/mesa_r.png' alt="Icono" class="img-mesa" />
 
                     <div class="c-boton">
-                    <button class="boton-verde" onclick="window.location.href = '/pages/pedidos.php?id=<?php echo $dato['id_mesa']; ?>'" >✓</button>
-                        <button class="boton-rojo">྾</button>
+                        <button class="boton-verde">✓</button>
+                        <button class="boton-rojo" onclick="window.location.href = '/pages/nuevo-pedido.php?id=<?php echo $dato['id_mesa']; ?>&idpersonal=<?php echo $id; ?>'">྾</button>
                     </div>
 
                     <p>Capacidad: <?php echo $dato['capacidad']  ?></p>
@@ -110,7 +110,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </main>
 
-<script src="../app.js" ></script>
+<script src="../app.js"></script>
 
 <?php
 incluirTemplate('footer');
