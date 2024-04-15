@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
     } else {
-        $query_metodo_pago = "INSERT INTO MetodoPago (id_contribucion, metodo_pago, monto) VALUES (1, '$metodo', $total );";
+        $query_metodo_pago = "INSERT INTO MetodoPago (id_contribucion, metodo_pago, monto) VALUES (NULL, '$metodo', $total );";
         $stmt_metodo_pago = $db->prepare($query_metodo_pago);
         $stmt_metodo_pago->execute();
         if ($stmt_metodo_pago->rowCount() > 0) {
