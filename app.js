@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   activarBotonEditarPersonal();
   activarBotonEliminarPersonal();
   mostrarOcultarCampo();
-
 });
 
 function botonMesa() {
@@ -105,6 +104,8 @@ function mostrarOcultarCampo() {
     });
   }
 }
+
+
 
 
 

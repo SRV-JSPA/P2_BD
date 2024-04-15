@@ -30,7 +30,9 @@ incluirTemplate('header', $inicio = true);
                     echo "<p><strong>Nombre:</strong> " . $fila['nombre'] . "</p>";
                     echo "<p><strong>Cantidad:</strong> " . $fila['cantidad'] . "</p>";
                     echo "<p><strong>Hora:</strong> " . $fila['hora'] . "</p>";
-                    echo "<input type='checkbox' class='check'>";
+                    ?>
+                    <input type='checkbox' class='check'>";
+                    <?php
                     echo "</div>";
                 }
             } else {
