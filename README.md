@@ -11,6 +11,7 @@ Antes de comenzar, asegúrate de cumplir con los siguientes requisitos:
 #Ejecuta los siguientes comandos para verificar que PHP y el driver PDO para PostgreSQL están correctamente instalados:
 
 php -v
+
 php -m | findstr pdo_pgsql
 
 ## Instalación
