@@ -46,6 +46,10 @@ $pedidos = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
     <div class="alerta exito">
         <p>Se agregó el ítem correctamente</p>
     </div>
+<?php } elseif ($exito == '3') { ?>
+    <div class="alerta exito">
+        <p>Se cerró la cuenta correctamente</p>
+    </div>
 <?php } ?>
 
 <main class="pedidos">
@@ -74,17 +78,35 @@ $pedidos = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
                     $item_info = $stmt_query_item->fetch(PDO::FETCH_ASSOC);
                     
                     
-                    $total_detalle = $dpd['cantidad'] * floatval($item_info['precio']);
+                    if (isset($dpd['cantidad']) && is_numeric($dpd['cantidad']) && isset($item_info['precio']) && is_numeric($item_info['precio'])) {
+                        $total_detalle = $dpd['cantidad'] * floatval($item_info['precio']);
+                    } else {
+                        $total_detalle = 0; 
+                    }
                     $total_general += $total_detalle; 
 
                     $query_cantidad = "UPDATE pedido SET subtotal = $total_general WHERE id_pedido = :id_pedido";
                     $stmt_query_cantidad = $db->prepare($query_cantidad);
                     $stmt_query_cantidad->bindParam(':id_pedido', $pd['id_pedido']);
                     $stmt_query_cantidad->execute();
+
+                    $query_pedido_info = "SELECT * FROM pedido WHERE id_pedido = :id_pedido";
+                    $stmt_pedido_info = $db->prepare($query_pedido_info);
+                    $stmt_pedido_info->bindParam(':id_pedido', $pd['id_pedido']);
+                    $stmt_pedido_info->execute();
+                    $pedido_info = $stmt_pedido_info->fetch(PDO::FETCH_ASSOC);
+                    $total_propina = floatval($pedido_info['total']);
                     
                     ?>
-                    <p><?php echo $dpd['cantidad'] ?> - <?php echo $item_info['nombre'] ?> - Total: <?php echo $total_detalle; ?></p>
+                    
+                    <?php if (is_array($dpd) && isset($dpd['cantidad']) && is_array($item_info) && isset($item_info['nombre'])) : ?>
+                    <p><?php echo $dpd['cantidad']; ?> - <?php echo $item_info['nombre']; ?> - Total: <?php echo $total_detalle; ?></p>
+                    <?php endif; ?>
+
+                    
+
                 <?php endforeach; ?>
+                
                 
 
 
@@ -97,8 +119,8 @@ $pedidos = $stmtPedido->fetchAll(PDO::FETCH_ASSOC);
                     <button type="submit" name="agregar_insumo" class="boton-verde">Agregar insumo</button>
                 </form>
                 <button onclick="window.location.href = '/pages/pdf-pedido.php?id=<?php echo $pd['id_pedido']; ?>'" class="boton-verde">Generar vista previa de Pedido</button>
-                <button class="boton-verde">Cerrar la cuenta</button>
-                <button onclick="window.location.href = '/pages/pago.php?id=<?php echo $pd['id_pedido']; ?>&total=<?php echo $total_general  ?>'"  class="boton-verde">Ingresar pago</button>
+                <button onclick="window.location.href = '/pages/cerrar-cuenta.php?id=<?php echo $pd['id_pedido'];  ?>'"   class="boton-verde">Cerrar la cuenta</button>
+                <button onclick="window.location.href = '/pages/pago.php?id=<?php echo $pd['id_pedido']; ?>&total=<?php echo $total_propina  ?>'"  class="boton-verde">Ingresar pago</button>
             </section>
         <?php endforeach; ?>
     <?php else : ?>

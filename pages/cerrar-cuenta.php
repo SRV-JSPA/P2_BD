@@ -9,7 +9,7 @@ $id = $_GET['id'] ?? null;
 if(isset($id)){
     date_default_timezone_set('America/Mexico_City');
     $horaActual = date("H:i:s");
-    $query = "UPDATE pedido SET horafin = '$horaActual' WHERE id_pedido = $id";
+    $query = "UPDATE pedido SET horafin = '$horaActual', hora = '$horaActual' WHERE id_pedido = $id";
     $stmt = $db->prepare($query);
     $stmt->execute();
     if($stmt->rowCount() > 0){
