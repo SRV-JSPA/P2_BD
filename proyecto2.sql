@@ -209,8 +209,8 @@ INSERT INTO Usuarios (usuario, contrasena, id_personal) VALUES ('gar92365', '023
 
 
 --Mesero--
-INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (3, 'Daniel Barrios', 1);
-INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (4, 'Sebastián Mendez', 2);
+INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (4, 'Daniel Barrios', 1);
+INSERT INTO Mesero (id_personal, nombre, id_area_asignada) VALUES (5, 'Sebastián Mendez', 2);
 
 
 --TRIGGER para calcular la propina y el total--
