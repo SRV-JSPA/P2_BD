@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <main class="form-reporte-platos">
+
+    <div >
     <h2>Reporte de Platos Más Pedidos</h2>
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -34,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Generar Reporte" class="boton-verde">
     </form>
-
+    </div >
     <?php if (isset($platos_mas_pedidos) && count($platos_mas_pedidos) > 0): ?>
         <table style='border-collapse: collapse; width: 100%;'>
             <tr>

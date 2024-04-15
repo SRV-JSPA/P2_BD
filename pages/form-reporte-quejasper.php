@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <main class="form-reporte-platos">
+    <div >
     <h2>Reporte de las quejas agrupadas por persona</h2>
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -45,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Generar Reporte" class="boton-verde">
     </form>
+     </div >
 
     <?php if (isset($reporte_quejas_por_persona) && count($reporte_quejas_por_persona) > 0): ?>
         <table style='border-collapse: collapse; width: 100%;'>

@@ -18,11 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <main class="form-reporte-platos">
-    <h2>Reporte de eficiencia de meseros</h2>
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="submit" value="Generar Reporte" class="boton-verde">
-    </form>
+    <div >
+        <h2>Reporte de eficiencia de meseros</h2>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <input type="submit" value="Generar Reporte" class="boton-verde">
+        </form>
+    </div>
 
     <?php if (isset($reporte_eficiencia_meseros) && count($reporte_eficiencia_meseros) > 0): ?>
         <table style='border-collapse: collapse; width: 100%;'>
